@@ -211,9 +211,8 @@ module controlpath(
         endcase
     end
 
-    // Example: store final result in register `kk`
     always @(*) begin
-        kk = c; // this just mirrors c; add logic if needed
+        kk = c; 
     end
 endmodule
 
@@ -267,10 +266,10 @@ module alu_tb;
         .kk(kk)
     );
 
-    // Clock generation
+    
     always #5 clk = ~clk;
 
-    // Stimulus
+
     initial begin
         $display("Time\tOP\tA\t\tB\t\tC\t\tZero Neg Oflow Cout");
 
@@ -314,7 +313,7 @@ module alu_tb;
 
         // Test Logical Shift Right
         a = 16'h8000;
-        b = 16'd0; // unused
+        b = 16'd0; 
         op = 3'd6;
         #10 print_status;
 
@@ -334,11 +333,11 @@ module alu_tb;
 
     function [1:0] op_sel(input [2:0] opval);
         begin
-            if (opval == 3'd0 || opval == 3'd1) // add/sub
+            if (opval == 3'd0 || opval == 3'd1) 
                 op_sel = 2'd0;
-            else if (opval >= 3'd2 && opval <= 3'd4) // bitwise
+            else if (opval >= 3'd2 && opval <= 3'd4) 
                 op_sel = 2'd1;
-            else // shift
+            else 
                 op_sel = 2'd2;
         end
     endfunction
